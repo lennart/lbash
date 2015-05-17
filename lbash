@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# Check for given shell script to read from
+if [ $# -eq 1 ]; then
+    scr=$1
+    echo "Entering live coding mode"
+    echo "Edit ${scr} and save the file, changes will automatically be applied"
+    echo "as soon as the current script evaluation finishes"
+    # loop infinitely
+    while true;
+    do
+        # source (evaluate) the given shell script
+	. "${scr}"
+    done
+    # exit when interrupted (CTRL+C)
+else
+    echo "Usage: $0 <path-to-livecode-script>"
+fi
